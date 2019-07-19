@@ -1,16 +1,16 @@
-var os = require("os");
-var ifaces = os.networkInterfaces();
-var webpack = require("webpack");
-var merge = require("webpack-merge");
-var FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin");
-var HtmlWebpackPlugin = require("html-webpack-plugin");
-var portfinder = require("portfinder");
-var baseWebpackConfig = require("./webpack.base.conf");
-var config = require("../config");
-var utils = require("./utils");
+const os = require("os");
+const ifaces = os.networkInterfaces();
+const webpack = require("webpack");
+const merge = require("webpack-merge");
+const FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const portfinder = require("portfinder");
+const baseWebpackConfig = require("./webpack.base.conf");
+const config = require("../config");
+const utils = require("./utils");
 
 let local_network = null;
-for (const dev in ifaces) {
+for (let dev in ifaces) {
     ifaces[dev].forEach(function(details) {
         if (details.family == "IPv4" && details.address.indexOf("192.168") > -1) {
             local_network = details.address;
@@ -19,7 +19,7 @@ for (const dev in ifaces) {
     });
 }
 
-var devWebpackConfig = {
+const devWebpackConfig = {
     mode: "development",
     devtool: "#cheap-module-eval-source-map",
     module: {

@@ -1,11 +1,6 @@
-var path = require("path");
-var utils = require("./utils");
-var config = require("../config");
-var { VueLoaderPlugin } = require("vue-loader");
-
-function resolve(dir) {
-    return path.join(__dirname, "..", dir);
-}
+const utils = require("./utils");
+const config = require("../config");
+const { VueLoaderPlugin } = require("vue-loader");
 
 module.exports = {
     entry: {
@@ -22,7 +17,7 @@ module.exports = {
         extensions: [".js", ".vue", ".json"],
         alias: {
             vue$: "vue/dist/vue.esm.js",
-            "@": resolve("src")
+            "@": utils.resolve("src")
         }
     },
     module: {
@@ -33,11 +28,11 @@ module.exports = {
             {
                 test: /\.js$/,
                 loader: "babel-loader",
-                include: [resolve("src")]
+                include: [utils.resolve("src")]
             },
             {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-                exclude: [resolve("src/assets/icon")],
+                exclude: [utils.resolve("src/assets/icon")],
                 loader: "url-loader",
                 options: {
                     limit: 10000,
@@ -46,7 +41,7 @@ module.exports = {
             },
             {
                 test: /\.svg$/,
-                include: [resolve("src/assets/icon")],
+                include: [utils.resolve("src/assets/icon")],
                 loader: "svg-inline-loader"
             },
             {

@@ -1,17 +1,17 @@
-var path = require("path");
-var webpack = require("webpack");
-var merge = require("webpack-merge");
-var HtmlWebpackPlugin = require("html-webpack-plugin");
-var CopyWebpackPlugin = require("copy-webpack-plugin");
-var { CleanWebpackPlugin } = require("clean-webpack-plugin");
-var TerserPlugin = require("terser-webpack-plugin");
-var MiniCssExtractPlugin = require("mini-css-extract-plugin");
-var OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-var baseWebpackConfig = require("./webpack.base.conf");
-var config = require("../config");
-var utils = require("./utils");
+const path = require("path");
+const webpack = require("webpack");
+const merge = require("webpack-merge");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const baseWebpackConfig = require("./webpack.base.conf");
+const config = require("../config");
+const utils = require("./utils");
 
-var prodWebpackConfig = {
+const prodWebpackConfig = {
     mode: "production",
     devtool: config.build.productionSourceMap ? config.build.devtool : false,
     output: {
@@ -82,7 +82,7 @@ var prodWebpackConfig = {
 };
 
 if (config.build.productionGzip) {
-    var CompressionPlugin = require("compression-webpack-plugin");
+    const CompressionPlugin = require("compression-webpack-plugin");
     prodWebpackConfig.plugins.push(
         new CompressionPlugin({
             threshold: 10240,
@@ -92,7 +92,7 @@ if (config.build.productionGzip) {
 }
 
 if (config.build.bundleAnalyzerReport) {
-    var BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
+    const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
         .BundleAnalyzerPlugin;
     prodWebpackConfig.plugins.push(new BundleAnalyzerPlugin());
 }
